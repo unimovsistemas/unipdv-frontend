@@ -9,7 +9,7 @@ import { PrimeNGConfig } from 'primeng/api';
   providers: [MessageService]
 })
 export class AppComponent{
-  title = 'pcp-frontend';
+  title = 'unipdv-frontend';
 
   constructor(private primengConfig: PrimeNGConfig) {}
 

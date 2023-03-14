@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "pcp-frontend": {
+    "unipdv-frontend": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/pcp-frontend",
+            "outputPath": "dist/unipdv-frontend",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -75,10 +75,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "pcp-frontend:build:production"
+              "browserTarget": "unipdv-frontend:build:production"
             },
             "development": {
-              "browserTarget": "pcp-frontend:build:development"
+              "browserTarget": "unipdv-frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -86,7 +86,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "pcp-frontend:build"
+            "browserTarget": "unipdv-frontend:build"
           }
         },
         "test": {
