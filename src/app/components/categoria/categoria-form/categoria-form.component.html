@@ -1,0 +1,13 @@
+<div class="ng justify-content-center align-items-center">
+    <form [formGroup]="formCategoria" (ngSubmit)="salvar()" #formDir="ngForm" class="formContainer">
+        <div class="p-fluid p-grid formgrid w-8">
+            <div class="p-field">
+                <label for="nome">Nome</label>
+                <input formControlName="nome" type="text" pInputText name="nome" required>
+            </div>
+        </div>
+        <div class="p-field">
+            <button pButton label="Salvar"></button>
+        </div>
+    </form>
+</div>

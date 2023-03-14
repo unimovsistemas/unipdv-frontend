@@ -1,0 +1,19 @@
+<p-table [value]="categorias" [paginator]="true" [rows]="5">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>nome</th>
+        <th>Ações</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-categoria>
+      <tr>
+        <td>{{ categoria.nome }}</td>
+        <td>
+            <button [routerLink]="['../atualizar', categoria.id]" pButton type="button" icon="pi pi-pencil" class="p-button-rounded p-button-info"></button>
+            <button pButton type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="deletar(categoria.id)"></button>
+          </td>
+      </tr>
+    </ng-template>
+    <p-paginator [rows]="5" [totalRecords]="totalRegistros" [pageLinkSize]="5" [style]="{'margin-top': '10px'}"></p-paginator>
+  </p-table>
+  <button routerLink="/pdv/categoria/cadastrar" pButton icon="pi pi-plus" label="Novo Categoria"></button>

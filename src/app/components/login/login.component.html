@@ -1,0 +1,37 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<div class="grid grid-nogutter center-justify">
+  <div class="col-12 sm:col-6 flex-order-0 sm:flex-order-1 w-screen sm:normal h-screen flex center-justify">
+    <div class="form grid flex center-justify">
+      <div class="card">
+        <div class="col-12 field flex center-justify">
+          <div class="card-container overflow-hidden flex center-justify">
+            <!--<div class="bg-contain bg-no-repeat bg-center border-round w-screen lista sm:lista" style="min-height: 200px; height: 10vw; background-image: url('../assets/img/logo.png');"></div>-->
+          </div>
+        </div>
+        <div class="col-12 field flex center-justify">
+          <p class="welcome text-2xl sm:text-6xl pb-3">Login</p>
+          <p></p>
+        </div>
+        <div class="col-12 field flex center-justify">
+          <span class="p-input-icon-left w-screen lista sm:lista">          
+            <i class="pi pi-user"></i>
+            <input type="text" pInputText [(ngModel)]="user.email" name="email" pInputText class="p-inputtext-lg" placeholder="Usuário" style="width: 100% !important;"> 
+          </span>
+        </div>
+        <div class="col-12 field flex center-justify">
+          <span class="p-input-icon-left w-screen lista sm:lista">
+            <i class="pi pi-lock"></i>
+            <input type="password" pPassword [(ngModel)]="user.password" [feedback]="false" name="password" InputText class="p-inputtext-lg" placeholder="Senha" style="width: 100% !important;">     
+          </span>
+        </div>
+        <div class="col-12 field flex center-justify">
+          <button pButton pRipple type="button" (click)="onSubmit()" label="Entrar" class="p-button-danger loginButton"></button>
+        </div>
+        <div class="col-12 field flex center-justify">
+          <p-message severity="error" text="Usuário ou senha inválido" *ngIf="loginError"></p-message>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

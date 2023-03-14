@@ -1,0 +1,50 @@
+<p-table [value]="estoques" [paginator]="true" [rows]="5">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Produto</th>
+      <th>Quantidade</th>
+      <th>Ações</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-estoque>
+    <tr>
+      <td>{{ estoque.produtoNome }}</td>
+      <td>{{ estoque.quantidade }}</td>
+      <td>
+        <button (click)="showModal(estoque.id)" label="Baixa Manual" pButton type="button" icon="pi pi-pencil"
+          class="p-button-rounded p-button-info"></button>
+      </td>
+    </tr>
+  </ng-template>
+  <p-paginator [rows]="5" [totalRecords]="totalRegistros" [pageLinkSize]="5"
+    [style]="{'margin-top': '10px'}"></p-paginator>
+</p-table>
+
+<p-dialog header="Baixa Manual" [(visible)]="displayModal" [responsive]="true" 
+[modal]="true" [closable]="true">
+  <div class="ui-dialog-content" style="text-align: center;">
+    <form [formGroup]="formEstoque" #formDir="ngForm"
+      class="formContainer">
+      <div class="p-fluid p-grid formgrid w-8">
+        <div class="p-field">
+          <label for="quantidade">Quantidade</label>
+          <p-inputNumber formControlName="quantidade" type="number" pInputNumber
+            name="quantidade"></p-inputNumber>
+        </div>
+        <div class="p-field">
+          <label for="motivos">Motivo</label>
+          <p-dropdown formControlName="motivo" [options]="motivos" optionLabel="motivo"
+            optionValue="motivo" [(ngModel)]="motivoSelecionado"></p-dropdown>
+        </div>
+        <div class="p-field">
+          <label for="comentario">Comentário</label>
+          <textarea formControlName="comentario" pInputTextarea name="comentario" rows="3"
+              cols="30"></textarea>
+      </div>
+      </div>
+      <div class="button">
+        <button type="submit" (click)="baixaManual()" pButton label="Salvar"></button>
+    </div>
+    </form>
+  </div>
+</p-dialog>
