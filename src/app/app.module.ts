@@ -51,6 +51,8 @@ import { PedidoComponent } from './components/pedido/pedido.component';
 import { MatSortModule } from "@angular/material";
 import { SidebarModule } from "primeng/sidebar";
 import {BreadcrumbModule} from 'primeng/breadcrumb';
+import { PedidoFormComponent } from './components/pedido/pedido-form/pedido-form.component';
+import { ConsultaPedidoComponent } from './components/pedido/consulta-pedido/consulta-pedido.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +69,9 @@ import {BreadcrumbModule} from 'primeng/breadcrumb';
     HistoricoComponent,
     VendedorComponent,
     VendedorFormComponent,
-    PedidoComponent
+    PedidoComponent,
+    PedidoFormComponent,
+    ConsultaPedidoComponent
   ],
   imports: [
     BrowserModule,

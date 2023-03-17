@@ -14,6 +14,8 @@ import { HistoricoComponent } from './components/historico/historico/historico.c
 import { VendedorComponent } from './components/vendedor/vendedor.component';
 import { VendedorFormComponent } from './components/vendedor/vendedor-form/vendedor-form.component';
 import { PedidoComponent } from './components/pedido/pedido.component';
+import { PedidoFormComponent } from './components/pedido/pedido-form/pedido-form.component';
+import { ConsultaPedidoComponent } from './components/pedido/consulta-pedido/consulta-pedido.component';
 
 const routes: Routes = [
   {
@@ -81,9 +83,17 @@ const routes: Routes = [
         component: VendedorFormComponent,
        },
        {
-        path: 'pedido/cadastrar',
+        path: 'pedido/listar',
         component: PedidoComponent,
        },
+       {
+       path: 'pedido/cadastrar',
+        component: PedidoFormComponent,
+       },
+       {
+        path: 'pedido/consultar',
+        component: ConsultaPedidoComponent
+       }
     ],
     /*canActivate: [AuthGuard]*/
   },
