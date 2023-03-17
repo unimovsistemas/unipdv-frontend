@@ -1,4 +1,5 @@
-<p-table [value]="produtos" [paginator]="true" [rows]="5">
+<p-card>
+  <p-table [value]="produtos" [paginator]="true" [rows]="3">
     <ng-template pTemplate="header">
       <tr>
         <th>Código</th>
@@ -16,14 +17,22 @@
         <td>{{ produto.nome }}</td>
         <td>{{ produto.preco | currency: "R$" }}</td>
         <td>{{ produto.desconto }}%</td>
-        <td>{{ produto.tamanho === null ? '-' :  produto.tamanho}}</td>
+        <td>{{ produto.tamanho === null ? '-' : produto.tamanho}}</td>
         <td>{{ produto.categoria.nome }}</td>
         <td>
-            <button [routerLink]="['../atualizar/', produto.id]" pButton type="button" icon="pi pi-pencil" class="p-button-rounded p-button-info"></button>
-            <button pButton type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="deletar(produto.id)"></button>
-          </td>
+          <button [routerLink]="['../atualizar/', produto.id]" pButton type="button" icon="pi pi-pencil"
+            class="p-button-rounded p-button-info"></button>
+          <button pButton type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger"
+            (click)="deletar(produto.id)"></button>
+        </td>
       </tr>
     </ng-template>
-    <p-paginator [rows]="5" [totalRecords]="totalRegistros" [pageLinkSize]="5" [style]="{'margin-top': '10px'}"></p-paginator>
+    <p-paginator [rows]="3" [totalRecords]="totalRegistros" [pageLinkSize]="3"
+      [style]="{'margin-top': '10px'}"></p-paginator>
   </p-table>
-  <button routerLink="/pdv/produto/cadastrar" pButton icon="pi pi-plus" label="Novo Produto"></button>
+  <ng-template pTemplate="footer">
+    <div class="grid grid-nogutter justify-content-center">
+      <button routerLink="/pdv/produto/cadastrar" pButton icon="pi pi-plus" label="Novo Produto"></button>
+    </div>
+  </ng-template>
+</p-card>

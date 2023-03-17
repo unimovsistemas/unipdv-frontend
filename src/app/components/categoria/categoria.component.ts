@@ -64,7 +64,7 @@ export class CategoriaComponent implements OnInit {
       messageErrorDelete(e: any) {
         this.alertMessage = {
           title: 'Ocorreu um erro ao deletar a Categoria',
-          message: e,
+          message: e.error.message,
           typeAlert: ERROR,
         };
         this.alertService.showGenericAlert(this.alertMessage);

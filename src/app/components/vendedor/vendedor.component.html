@@ -1,0 +1,35 @@
+<p-card>
+<p-table [scrollHeight]="'500px'" [frozenWidth]="'800px'" [value]="vendedores" [paginator]="true" [rows]="5">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Nome</th>
+        <th>Celular</th>
+        <th>Congregação</th>
+        <th>Login</th>
+        <th>Admin</th>
+        <th>Qtd Vendas</th>
+        <th>Ações</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-vendedor>
+      <tr>
+        <td>{{ vendedor.nome }}</td>
+        <td>{{ vendedor.celular ? vendedor.celular : '-' }}</td>
+        <td>{{ vendedor.congregacao ? vendedor.congregacao : '-' }}</td>
+        <td>{{ vendedor.usuario.login }}</td>
+        <td>{{ vendedor.usuario.master }}</td>
+        <td>{{ vendedor.qtdVendas }}</td>
+        <td>
+           <!--<button [routerLink]="['../atualizar', vendedor.id]" pButton type="button" icon="pi pi-pencil" class="p-button-rounded p-button-info"></button>-->
+            <button pButton type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="deletar(vendedor.id)"></button>
+          </td>
+      </tr>
+    </ng-template>
+    <p-paginator [rows]="5" [totalRecords]="vendedores.length" [pageLinkSize]="5" [style]="{'margin-top': '10px'}"></p-paginator>
+  </p-table>
+  <ng-template pTemplate="footer">
+    <div class="grid grid-nogutter justify-content-center">
+      <button routerLink="/pdv/vendedor/cadastrar" pButton icon="pi pi-plus" label="Novo Vendedor"></button>
+    </div>
+  </ng-template>
+</p-card>

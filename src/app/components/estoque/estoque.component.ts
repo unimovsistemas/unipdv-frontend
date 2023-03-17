@@ -8,6 +8,7 @@ import {
 }
   from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HeaderService } from 'src/app/templates/header/header.service';
 import {
   IAlert
 }
@@ -41,7 +42,12 @@ import { ERROR, SUCCESS } from 'src/environments/environment';
 
   constructor(private estoqueService: EstoqueService, private produtoService: ProdutoService,
     private alertService: AlertService, private route: ActivatedRoute,
-    private redirectRouter: Router, private changeDetector: ChangeDetectorRef) { }
+    private redirectRouter: Router, private changeDetector: ChangeDetectorRef, private headerService : HeaderService) {
+      headerService.headerData = {
+        title: 'Estoque',
+        routerUrl: 'pdv/estoque/listar'
+    }
+     }
 
   ngOnInit(): void {
     this.formEstoque = new FormGroup({
@@ -64,6 +70,7 @@ import { ERROR, SUCCESS } from 'src/environments/environment';
           produtoNome: produto.nome
         })
       )
+      this.totalRegistros = produtos.length;
     });
     this.estoques = estoques;
   }

@@ -1,13 +1,15 @@
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTableModule } from "@angular/material";
-import { MatCardModule } from "@angular/material/card";
 import { MatIconModule } from "@angular/material/icon";
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
 import { BrowserModule } from "@angular/platform-browser";
 import { AccordionModule } from "primeng/accordion";
 import { ConfirmationService, MessageService } from "primeng/api";
-import { ButtonModule } from "primeng/button";
+import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from "primeng/calendar";
 import { CheckboxModule } from "primeng/checkbox";
 import { ConfirmPopupModule } from "primeng/confirmpopup";
@@ -37,10 +39,18 @@ import { DashboardService } from "./_services/dashboard/dashboard.service";
 import { TokenInterceptor } from "./_services/interceptor/token.interceptor";
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TableModule } from "primeng/table";
-import { MatCommonModule } from "@angular/material/core";
 import { Location, CommonModule } from '@angular/common';
 import { LayoutDefaultModule } from "./layouts/layout-default/layout-default.module";
-
+import { HistoricoComponent } from './components/historico/historico/historico.component';
+import { VendedorComponent } from './components/vendedor/vendedor.component';
+import { VendedorFormComponent } from './components/vendedor/vendedor-form/vendedor-form.component';
+import {StepsModule} from 'primeng/steps';
+import {ToastModule} from 'primeng/toast';
+import {CardModule} from 'primeng/card';
+import { PedidoComponent } from './components/pedido/pedido.component';
+import { MatSortModule } from "@angular/material";
+import { SidebarModule } from "primeng/sidebar";
+import {BreadcrumbModule} from 'primeng/breadcrumb';
 
 @NgModule({
   declarations: [
@@ -53,7 +63,11 @@ import { LayoutDefaultModule } from "./layouts/layout-default/layout-default.mod
     CategoriaComponent,
     ProdutoFormComponent,
     CategoriaFormComponent,
-    EstoqueComponent
+    EstoqueComponent,
+    HistoricoComponent,
+    VendedorComponent,
+    VendedorFormComponent,
+    PedidoComponent
   ],
   imports: [
     BrowserModule,
@@ -65,11 +79,9 @@ import { LayoutDefaultModule } from "./layouts/layout-default/layout-default.mod
     LayoutDefaultModule,
     InputTextModule,
     CalendarModule,
-    ButtonModule,
     DropdownModule,
     HttpClientModule,
     FormsModule,
-    MatTableModule,
     ReactiveFormsModule,
     ImageModule,
     InputMaskModule,
@@ -85,13 +97,21 @@ import { LayoutDefaultModule } from "./layouts/layout-default/layout-default.mod
     InputNumberModule,
     CheckboxModule,
     InputMaskModule,
-    MatCardModule,
-    MatIconModule,
     PaginatorModule,
     TableModule,
-    MatCommonModule,
     CommonModule,
-    DialogModule
+    DialogModule,
+    StepsModule,
+    ToastModule,
+    CardModule,
+    MatIconModule,
+    MatGridListModule,
+    MatFormFieldModule,
+    MatCardModule,
+    MatTableModule,
+    MatSortModule,
+    SidebarModule,
+    BreadcrumbModule,    
   ],
   providers: [
     Location,

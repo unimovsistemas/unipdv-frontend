@@ -1,4 +1,5 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import { MenuItem } from 'primeng/api';
 import {HeaderService} from 'src/app/templates/header/header.service';
 import {DashboardService} from 'src/app/_services/dashboard/dashboard.service';
 
@@ -14,6 +15,8 @@ export class HomeCreateComponent implements OnInit {
     quantidadeTotalVendas : number = 0;
 
     data : any;
+
+    items!: MenuItem[];
 
     constructor(private headerService : HeaderService, private dashboardService : DashboardService) {
         headerService.headerData = {

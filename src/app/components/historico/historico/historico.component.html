@@ -1,0 +1,58 @@
+<p-card>
+  <p-table [value]="historicos" [paginator]="true" [rows]="5">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Valor Total</th>
+        <th>Desconto Total</th>
+        <th>Status</th>
+        <th>Método Pagamento</th>
+        <th>Motivo</th>
+        <th>Evento</th>
+        <th>Vendedor</th>
+        <th>Data/Hora</th>
+        <th>Ações</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-historico>
+      <tr>
+        <td>{{ historico.valorTotal }}</td>
+        <td>{{ historico.descontoTotal }}</td>
+        <td>{{ historico.status }}</td>
+        <td>{{ historico.metodoPagamento }}</td>
+        <td>{{ historico.motivo }}</td>
+        <td>{{ historico.evento }}</td>
+        <td>{{ historico.vendedor }}</td>
+        <td>{{ historico.dataHora }}</td>
+        <td>
+          <button (click)="showModal(historico.id)" label="Ver Produtos" pButton type="button" icon="pi pi-pencil"
+            class="p-button-rounded p-button-info"></button>
+        </td>
+      </tr>
+    </ng-template>
+    <p-paginator [rows]="5" [totalRecords]="totalRegistros" [pageLinkSize]="5"
+    [style]="{'margin-top': '10px'}"></p-paginator>
+  </p-table>
+
+  <p-dialog header="Produtos Pedido" [(visible)]="displayModal" [responsive]="true" [modal]="true" [closable]="true">
+    <div class="ui-dialog-content" style="text-align: center;">
+      <p-table [value]="produtos" [paginator]="true" [rows]="5">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Código</th>
+            <th>Nome</th>
+            <th>Quantidade</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-produto>
+          <tr>
+            <td>{{ produto.produto.codigo }}</td>
+            <td>{{ produto.produto.nome }}</td>
+            <td>{{ produto.quantidade }}</td>
+          </tr>
+        </ng-template>
+        <p-paginator [rows]="5" [totalRecords]="produtos.length" [pageLinkSize]="5"
+          [style]="{'margin-top': '10px'}"></p-paginator>
+      </p-table>
+    </div>
+  </p-dialog>
+</p-card>

@@ -4,6 +4,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {SidebarModule} from 'primeng/sidebar';
+import { BreadcrumbModule } from 'primeng/breadcrumb';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import {SidebarModule} from 'primeng/sidebar';
   imports: [
     CommonModule,
     RouterModule,
-    SidebarModule
+    SidebarModule,
+    BreadcrumbModule
   ],
   exports: [
     SidebarComponent,

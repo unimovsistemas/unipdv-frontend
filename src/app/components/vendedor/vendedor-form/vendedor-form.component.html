@@ -1,0 +1,80 @@
+<div class="ng justify-content-center align-items-center">
+    <p-card>
+        <p-toast></p-toast>
+        <p-steps [model]="steps" [readonly]="true" [(activeIndex)]="stepIndex"></p-steps>
+    </p-card>
+
+    <div class="content-section implementation">
+        <p-card *ngIf="stepIndex === 0">
+            <ng-template pTemplate="subtitle">
+                Entre com as informações do Usuário
+            </ng-template>
+            <form [formGroup]="usuarioForm" (ngSubmit)="submitUserForm()">
+                <div class="p-fluid formgrid grid">
+                    <div class="field col-12">
+                        <label for="login">Login</label>
+                        <input pInputText type="text" formControlName="login" placeholder="Username" />
+                    </div>
+                    <div class="field col-12">
+                        <label for="senha">Senha</label>
+                        <input pPassword type="password" formControlName="senha" placeholder="Senha" />
+                    </div>
+                </div>
+                <div class="grid grid-nogutter justify-content-end">
+                    <button pButton label="Próximo" icon="pi pi-angle-right" iconPos="right"></button>
+                </div>
+            </form>
+        </p-card>
+    </div>
+
+    <div class="content-section implementation">
+        <p-card *ngIf="stepIndex === 1">
+            <ng-template pTemplate="subtitle">
+                Entre com as informações do Vendedor
+            </ng-template>
+            <form [formGroup]="vendedorForm" (ngSubmit)="submitVendorForm()">
+                <div class="p-fluid formgrid grid">
+                    <div class="field col-12">
+                        <span class="p-inputgroup-addon">
+                            <i class="pi pi-user"></i>
+                        </span>
+                        <input pInputText type="text" formControlName="nome" placeholder="Nome" />
+                    </div>
+                    <div class="field col-12">
+                        <span class="p-inputgroup-addon">
+                            <i class="pi pi-mobile"></i>
+                        </span>
+                        <input pInputText type="text" formControlName="celular" placeholder="Celular" />
+                    </div>
+                    <div class="field col-12">
+                        <span class="p-inputgroup-addon">
+                            <i class="pi pi-envelope"></i>
+                        </span>
+                        <input pInputText type="email" formControlName="email" placeholder="Email" />
+                    </div>
+                    <div class="field col-12">
+                        <span class="p-inputgroup-addon">
+                            <i class="pi pi-id-card"></i>
+                        </span>
+                        <input pInputText type="text" formControlName="cpf" placeholder="CPF" />
+                    </div>
+                    <div class="field col-12">
+                        <span class="p-inputgroup-addon">
+                            <i class="pi pi-home"></i>
+                        </span>
+                        <input pInputText type="text" formControlName="congregacao" placeholder="Congregacao" />
+                    </div>
+                </div>
+                <div class="grid grid-nogutter justify-content-center">
+                    <div style="padding: 20px">
+                        <button id="voltar" pButton type="button" label="Voltar" (click)="stepIndex = 0"
+                            icon="pi pi-angle-left" iconPos="left" style="width: 120%;"></button>
+                    </div>
+                    <div style="padding: 20px">
+                        <button pButton id="salvar" type="submit" label="Cadastrar" icon="pi pi-angle-right"
+                            iconPos="right" style="width: 100%;"></button>
+                    </div>
+                </div>
+            </form>
+        </p-card>
+    </div>

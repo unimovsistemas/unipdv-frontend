@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
-import { User } from 'src/app/components/user/user.model';
+import { User } from 'src/app/_services/user/user.model';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
