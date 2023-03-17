@@ -1,5 +1,8 @@
 <p-card>
-    <p-table [scrollHeight]="'500px'" [frozenWidth]="'800px'" [value]="pedidos" [paginator]="true" [rows]="5">
+    <ng-template pTemplate="title">
+        Pedidos
+    </ng-template>
+    <p-table [scrollHeight]="'500px'" [frozenWidth]="'800px'" [value]="pedidos" [paginator]="true" [rows]="2">
         <ng-template pTemplate="header">
             <tr>
                 <th>Cliente</th>
@@ -29,7 +32,7 @@
                 </td>
             </tr>
         </ng-template>
-        <p-paginator [rows]="5" [totalRecords]="totalPedidos" [pageLinkSize]="5"
+        <p-paginator [rows]="2" [totalRecords]="totalPedidos" [pageLinkSize]="2"
             [style]="{'margin-top': '10px'}"></p-paginator>
     </p-table>
     <ng-template pTemplate="footer">

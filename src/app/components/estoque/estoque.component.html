@@ -19,6 +19,11 @@
     </ng-template>
     <p-paginator [rows]="5" [totalRecords]="totalRegistros" [pageLinkSize]="5" [style]="{'margin-top': '10px'}"></p-paginator>
   </p-table>
+  <div class="grid grid-nogutter justify-content-center">
+    <div style="padding: 20px">
+        <button routerLink="/pdv/estoque/consultar" pButton icon="pi pi-search-plus" label="Consultar Pedido"></button>
+    </div>
+</div>
 </p-card>
 
 <p-dialog header="Baixa Manual" [(visible)]="displayModal" [modal]="true" [closable]="true">

@@ -11,7 +11,7 @@ import {
 }
 from 'rxjs';
 import {
-    IPedido
+    IPedido, IPedidoInput
 }
 from 'src/app/_interfaces/pedido/i-pedido';
 import {
@@ -23,11 +23,11 @@ from 'src/environments/environment';
 
     constructor(private httpClient: HttpClient) {}
 
-    save(pedido : IPedido):Observable < IPedido > {
+    save(pedido : IPedidoInput):Observable < IPedido > {
         return this.httpClient.post<IPedido>(`${API_BASE}/pedido`, pedido);
     }
 
-    update(pedido : IPedido):Observable < IPedido > {
+    update(pedido : IPedidoInput):Observable < IPedido > {
         return this.httpClient.put<IPedido>(`${API_BASE}/pedido / ${ pedido.id }`, pedido);
     }
 

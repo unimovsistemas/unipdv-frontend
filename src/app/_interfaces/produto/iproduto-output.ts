@@ -1,4 +1,5 @@
 import { IcategoriaOutput } from "../categoria/icategoria-output";
+import { Iestoqueoutput } from "../estoque/iestoqueoutput";
 
 export interface IprodutoOutput {
     id?: string;
@@ -9,8 +10,6 @@ export interface IprodutoOutput {
     desconto: number;
     tamanho: string;
     categoria: IcategoriaOutput;
-    estoque: {
-        id?: string;
-        quantidade: number;
-    };
+    estoque: Iestoqueoutput;
+    pedidoQuantidade?: number;
 }

@@ -53,6 +53,7 @@ import { SidebarModule } from "primeng/sidebar";
 import {BreadcrumbModule} from 'primeng/breadcrumb';
 import { PedidoFormComponent } from './components/pedido/pedido-form/pedido-form.component';
 import { ConsultaPedidoComponent } from './components/pedido/consulta-pedido/consulta-pedido.component';
+import { ConsultaEstoqueComponent } from './components/estoque/consulta-estoque/consulta-estoque.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { ConsultaPedidoComponent } from './components/pedido/consulta-pedido/con
     VendedorFormComponent,
     PedidoComponent,
     PedidoFormComponent,
-    ConsultaPedidoComponent
+    ConsultaPedidoComponent,
+    ConsultaEstoqueComponent
   ],
   imports: [
     BrowserModule,
@@ -115,7 +117,7 @@ import { ConsultaPedidoComponent } from './components/pedido/consulta-pedido/con
     MatTableModule,
     MatSortModule,
     SidebarModule,
-    BreadcrumbModule,    
+    BreadcrumbModule,
   ],
   providers: [
     Location,

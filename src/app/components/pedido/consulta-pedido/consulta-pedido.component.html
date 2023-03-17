@@ -1,12 +1,20 @@
 <p-card>
+    <ng-template pTemplate="title">
+        Consulta Pedidos Cliente
+    </ng-template>
     <div class="search-container">
-        <input type="text" placeholder="Digite o código do pedido" [(ngModel)]="nomeCliente">
-        <button type="button" pButton icon="pi pi-search" label="Consultar" (click)="consultarPedido()"></button>
+        <input type="text" placeholder="Digite o nome do cliente" [(ngModel)]="nomeCliente">
+        <div class="grid grid-nogutter justify-content-start">
+            <div style="margin-top: 20px">
+                <button type="button" pButton icon="pi pi-search" label="Consultar"
+                    (click)="consultarPedido()"></button>
+            </div>
+        </div>
     </div>
 </p-card>
 
 <p-card>
-    <p-table [scrollHeight]="'500px'" [frozenWidth]="'800px'" [value]="pedidos" [paginator]="true" [rows]="5">
+    <p-table [scrollHeight]="'500px'" [frozenWidth]="'800px'" [value]="pedidos" [paginator]="true" [rows]="2">
         <ng-template pTemplate="header">
             <tr>
                 <th>Cliente</th>
@@ -36,20 +44,16 @@
                 </td>
             </tr>
         </ng-template>
-        <p-paginator [rows]="5" [totalRecords]="totalPedidos" [pageLinkSize]="5"
+        <p-paginator [rows]="2" [totalRecords]="totalPedidos" [pageLinkSize]="2"
             [style]="{'margin-top': '10px'}"></p-paginator>
     </p-table>
     <ng-template pTemplate="footer">
-        <div class="grid grid-nogutter justify-content-center">
-        </div>
-
         <div class="grid grid-nogutter justify-content-center">
             <div style="padding: 20px">
                 <button routerLink="/pdv/pedido/cadastrar" pButton icon="pi pi-plus" label="Novo Pedido"></button>
             </div>
             <div style="padding: 20px">
-                <button routerLink="/pdv/pedido/listar" pButton icon="pi pi-arrow-left"
-                    label="Voltar"></button>
+                <button routerLink="/pdv/pedido/listar" pButton icon="pi pi-arrow-left" label="Voltar"></button>
             </div>
         </div>
     </ng-template>

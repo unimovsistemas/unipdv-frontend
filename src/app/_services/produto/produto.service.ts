@@ -34,4 +34,8 @@ export class ProdutoService {
         return this.http.get<IprodutoOutput>(`${API_BASE}/produto/${id}`);
     }
 
+    findProdutoPorCodigo(codigo: string): Observable <IprodutoOutput> {
+        return this.http.get<IprodutoOutput>(`${API_BASE}/produto/${codigo}`);
+    }
+
 }

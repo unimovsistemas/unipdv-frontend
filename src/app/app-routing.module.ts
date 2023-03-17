@@ -16,6 +16,7 @@ import { VendedorFormComponent } from './components/vendedor/vendedor-form/vende
 import { PedidoComponent } from './components/pedido/pedido.component';
 import { PedidoFormComponent } from './components/pedido/pedido-form/pedido-form.component';
 import { ConsultaPedidoComponent } from './components/pedido/consulta-pedido/consulta-pedido.component';
+import { ConsultaEstoqueComponent } from './components/estoque/consulta-estoque/consulta-estoque.component';
 
 const routes: Routes = [
   {
@@ -66,6 +67,10 @@ const routes: Routes = [
        path: 'estoque/listar',
        component: EstoqueComponent,
       },
+      {
+        path: 'estoque/consultar',
+        component: ConsultaEstoqueComponent,
+       },
       {
         path: 'historico/listar',
         component: HistoricoComponent,

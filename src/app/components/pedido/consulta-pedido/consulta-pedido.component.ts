@@ -13,6 +13,8 @@ import {
     PedidoService
 }
 from 'src/app/_services/pedido/pedido.service';
+import { AlertService } from 'src/app/_shared/alert/alert.service';
+import { ERROR, SUCCESS } from 'src/environments/environment';
 
 @Component({ selector: 'app-consulta-pedido', templateUrl: './consulta-pedido.component.html', styleUrls: ['./consulta-pedido.component.scss'] }) export class ConsultaPedidoComponent implements OnInit {
 
@@ -26,16 +28,47 @@ from 'src/app/_services/pedido/pedido.service';
     alertMessage!: IAlert;
     form!: FormGroup;
 
-    constructor(private pedidoService : PedidoService) {}
+    constructor(private pedidoService : PedidoService, private alertService: AlertService) {}
 
     ngOnInit():void {}
 
-    consultarPedido() {
-        this.pedidoService.findAllPedidoPorNomeCliente(this.nomeCliente)
-        .subscribe(pedidos => { 
-          this.pedidos = pedidos; 
-          this.totalPedidos = pedidos.length; 
+    consultarPedido(){
+    try {
+        this.pedidoService.findAllPedidoPorNomeCliente(this.nomeCliente).subscribe({
+          next: (pedidos) => {
+            this.pedidos = pedidos; 
+            this.totalPedidos = pedidos.length;
+        },
+          error: (e) => this.errorMessage(e),
+          complete: () => console.log('OK'),
         });
+      }
+      catch (error) {
+        this.errorMessage(error);
+      }
+    }
+  
+    successMessage(result: any) {
+      if (result) {
+        this.alertMessage = {
+          title: '',
+          message: 'Operação Realizada Com Sucesso!',
+          typeAlert: SUCCESS,
+        };
+        this.alertService.showGenericAlert(this.alertMessage);
+      } else {
+        this.errorMessage("Entre em contato com o Administrador do Sistema!");
+      }
+    }
+  
+    errorMessage(error: any) {
+      console.log(error);
+      this.alertMessage = {
+        title: 'Ocorreu um erro ao tentar realizar a busca dos pedidos',
+        message: error.error.message,
+        typeAlert: ERROR,
+      };
+      this.alertService.showGenericAlert(this.alertMessage);
     }
 
     showModal(pedido: IPedido) {

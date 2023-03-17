@@ -3,33 +3,52 @@
         Novo Pedido
     </ng-template>
 
-    <div class="p-fluid">
-        <div class="p-field">
-            <label for="productCode">Código do Produto</label>
-            <input type="text" id="productCode" [(ngModel)]="productCode">
+    <div class="search-container">
+        <input pInputText type="text" id="productCode" placeholder="Código do Produto" [(ngModel)]="productCode">
+        <div class="grid grid-nogutter justify-content-start">
+            <div style="margin-top: 20px">
+                <button pButton label="Adicionar à Lista" (click)="addProductToList()"
+                    icon="pi pi-shopping-cart"></button>
+            </div>
         </div>
-
-        <button pButton label="Adicionar à Lista" (click)="addProductToList()"></button>
     </div>
+</p-card>
 
-    <br>
-
-    <div class="p-fluid">
-        <p-table [value]="shoppingList">
-            <ng-template pTemplate="header">
-                <tr>
-                    <th>Código do Produto</th>
-                </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-product>
-                <tr>
-                    <td>{{ product }}</td>
-                </tr>
-            </ng-template>
-        </p-table>
-    </div>
-
-    <br>
+<p-card>
+    <p-table [scrollHeight]="'500px'" [frozenWidth]="'800px'" [value]="shoppingList" [paginator]="true" [rows]="10">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Código</th>
+                <th>Nome</th>
+                <th>Qtd Estoque</th>
+                <th>Preço</th>
+                <th>Tamanho</th>
+                <th>Categoria</th>
+                <th>Quantidade</th>
+                <th>Ações</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+            <tr>
+                <td>{{ product.codigo }}</td>
+                <td>{{ product.nome }}</td>
+                <td>{{ product.estoque.quantidade }}</td>
+                <td>{{ product.preco }}</td>
+                <td>{{ product.tamanho }}</td>
+                <td>{{ product.categoria.nome }}</td>
+                <td>
+                    <input pInputText type="text" [(ngModel)]="product.pedidoQuantidade" name="qtdProduto"
+                        placeholder="Qtd" required="true">
+                </td>
+                <td>
+                    <button pButton type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger"
+                        (click)="removerItemLista(product.codigo)"></button>
+                </td>
+            </tr>
+        </ng-template>
+        <p-paginator [rows]="10" [totalRecords]="totalProdutos" [pageLinkSize]="10"
+            [style]="{'margin-top': '10px'}"></p-paginator>
+    </p-table>
     <ng-template pTemplate="footer">
         <div class="grid grid-nogutter justify-content-center">
             <div style="padding: 20px">
@@ -39,9 +58,55 @@
                 <button pButton label="Finalizar Pedido" (click)="finalizeOrder()" icon="pi pi-thumbs-up"></button>
             </div>
             <div style="padding: 20px">
-                <button routerLink="/pdv/pedido/listar" pButton icon="pi pi-arrow-left"
-                    label="Voltar"></button>
+                <button routerLink="/pdv/pedido/listar" pButton icon="pi pi-arrow-left" label="Voltar"></button>
             </div>
         </div>
     </ng-template>
 </p-card>
+
+<p-dialog header="Produtos Pedido" [(visible)]="displayModalPedido" [responsive]="true" [modal]="true"
+    [closable]="true">
+    <div class="ui-dialog-content" style="text-align: center;">
+        <form [formGroup]="formPedido" #formDir="ngForm" class="formContainer">
+            <div class="p-fluid p-grid formgrid w-8">
+                <div class="p-field">
+                    <label for="nomeCliente">Nome Cliente</label>
+                    <input pInputText formControlName="nomeCliente" type="text" pInputNumber name="nomeCliente">
+                </div>
+                <div class="p-field">
+                    <label for="percentualDescontoPedido">Percentual Desconto</label>
+                    <p-inputNumber formControlName="percentualDescontoPedido" type="number" pInputNumber
+                        name="percentualDescontoPedido"></p-inputNumber>
+                </div>
+                <div class="p-field">
+                    <label for="motivos">Pedido Status</label>
+                    <p-dropdown formControlName="pedidoStatus" [options]="pedidoStatus"
+                        [(ngModel)]="pedidoStatusSelecionado"></p-dropdown>
+                </div>
+                <div class="p-field">
+                    <label for="motivos">Método Pagamento</label>
+                    <p-dropdown formControlName="metodoPagamento" [options]="metodosPagamento"
+                        [(ngModel)]="metodoPagamentoSelecionado"></p-dropdown>
+                </div>
+                <br>
+                <div class="grid grid-nogutter justify-content-start">
+                    <div class="p-field" style="padding: 5px">
+                        <p-checkbox formControlName="doacao" [binary]="true" label="Doação?"
+                            [(ngModel)]="isDoacao"></p-checkbox>
+                    </div>
+                    <div class="p-field" style="padding: 5px">
+                        <p-checkbox formControlName="fiado" [binary]="true" label="Fiado?"
+                            [(ngModel)]="isFiado"></p-checkbox>
+                    </div>
+                </div>
+            </div>
+            <label severity="info">Valor total: {{valorTotalPedido | currency:'BRL'}}</label>
+            <label severity="info">Desconto Aplicado: -{{descontoTotalPedido | currency:'BRL'}}</label>
+            <div class="grid grid-nogutter justify-content-center" style="padding: 10px">
+                <div class="button">
+                    <button type="submit" (click)="concluirPedido()" pButton label="Concluir Pedido"></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</p-dialog>
