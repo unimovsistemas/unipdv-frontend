@@ -14,7 +14,7 @@
 </p-card>
 
 <p-card>
-    <p-table [value]="estoques" [paginator]="true" [rows]="5">
+    <p-table [value]="estoques">
       <ng-template pTemplate="header">
         <tr>
           <th>Produto</th>
@@ -32,7 +32,6 @@
           </td>
         </tr>
       </ng-template>
-      <p-paginator [rows]="5" [totalRecords]="totalRegistros" [pageLinkSize]="5" [style]="{'margin-top': '10px'}"></p-paginator>
     </p-table>
   </p-card>
   

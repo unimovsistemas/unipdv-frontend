@@ -114,21 +114,28 @@ export class PedidoFormComponent implements OnInit {
             autor: 'leogui.moritz'
         };
 
+        //Limpar totalizadores
+        this.valorTotalPedido = 0;
+        this.descontoTotalPedido = 0;
+
+        //Adicionar itens da lista de compra no pedido
         this.shoppingList.forEach(produto => {
             this.pedido.pedidoProdutos ?. push(this.toPedidoProduto(produto));
             this.totalPedidoProdutos = this.pedido.pedidoProdutos ?. length !;
             this.calcularValorTotal(produto.preco, produto.desconto, produto.pedidoQuantidade !);
         });
+
+        //Abre o model para preencher os campos do pedido
         this.displayModalPedido = true;
 
     }
 
     calcularValorTotal(preco : number, desconto : number, pedidoQuantidade : number) {
         if (preco != null && desconto != null && pedidoQuantidade != null) {
-            this.valorTotalPedido = preco * pedidoQuantidade;
+            this.valorTotalPedido = this.valorTotalPedido + (preco * pedidoQuantidade);
             if (desconto > 0) {
                 let descontoValor = this.valorTotalPedido * (desconto / 100);
-                this.descontoTotalPedido = this.valorTotalPedido - descontoValor;
+                this.descontoTotalPedido = this.descontoTotalPedido + (this.valorTotalPedido - descontoValor);
             } else {
                 this.descontoTotalPedido = 0;
             }
