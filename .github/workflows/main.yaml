@@ -17,7 +17,7 @@ jobs:
       - name: Install Dependencies
         run: npm install
       - name: Build
-        run: ng build
+        run: npm run build --prod
       - name: Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
