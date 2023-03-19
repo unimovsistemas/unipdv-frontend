@@ -23,6 +23,10 @@ jobs:
         with:
           branch: gh-pages
           folder: dist/
+          server: ${{ secrets.ftp_host }}
+          username: ${{ secrets.ftp_user }}
+          password: ${{ secrets.ftp_password }}
+          server-dir: /
   web-deploy:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
