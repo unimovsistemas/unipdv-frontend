@@ -9,7 +9,7 @@ export const environment = {
 };
 
 //Trocar para URL do Endpoint
-export const API_BASE = "http://localhost:8001/api/";
+export const API_BASE = "https://unipdv-backend.herokuapp.com/api/";
 
 //Alerts
 export const INFO = <SweetAlertIcon>'info';
