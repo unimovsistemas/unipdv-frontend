@@ -22,11 +22,11 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
           branch: gh-pages
-          folder: dist/
+          folder: unipdv/dist/
           server: ${{ secrets.ftp_host }}
           username: ${{ secrets.ftp_user }}
           password: ${{ secrets.ftp_password }}
-          server-dir: /unipdv
+          server-dir: /
   web-deploy:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
@@ -40,4 +40,4 @@ jobs:
           server: ${{ secrets.ftp_host }}
           username: ${{ secrets.ftp_user }}
           password: ${{ secrets.ftp_password }}
-          server-dir: /unipdv
+          server-dir: /
