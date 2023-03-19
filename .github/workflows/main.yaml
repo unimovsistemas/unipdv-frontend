@@ -19,7 +19,7 @@ jobs:
       - name: Build
         run: npm run build --prod
       - name: Deploy
-        uses: unimovsistemas/unipdv-frontend/FTP-Deploy-Action@4.0.0
+        uses: unipdv-frontend/FTP-Deploy-Action@4.0.0
         with:
           branch: gh-pages
           folder: dist/
