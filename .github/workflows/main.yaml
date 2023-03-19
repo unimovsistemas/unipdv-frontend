@@ -19,7 +19,6 @@ jobs:
       - name: Build
         run: npm run build --prod
       - name: Deploy
-        uses: unimovsistemas/unipdv-frontend
         with:
           branch: gh-pages
           folder: dist/
