@@ -19,7 +19,7 @@ jobs:
       - name: Build
         run: npm run build --prod
       - name: Deploy
-        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        uses: /.
         with:
           branch: gh-pages
           folder: dist/
