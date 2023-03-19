@@ -17,7 +17,7 @@ jobs:
       - name: Install Dependencies
         run: npm install
       - name: Build
-        run: npm run build --prods
+        run: npm run build --prod
       - name: Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
@@ -27,17 +27,4 @@ jobs:
           username: ${{ secrets.ftp_user }}
           password: ${{ secrets.ftp_password }}
           server-dir: /
-  web-deploy:
-    name: 🎉 Deploy
-    runs-on: ubuntu-latest
-    steps:
-      - name: 🚚 Get latest code
-        uses: actions/checkout@v2
-
-      - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@4.0.0
-        with:
-          server: ${{ secrets.ftp_host }}
-          username: ${{ secrets.ftp_user }}
-          password: ${{ secrets.ftp_password }}
-          server-dir: /
+      
