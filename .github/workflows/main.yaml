@@ -24,6 +24,6 @@ jobs:
         server: ${{ secrets.ftp_host }}
         username: ${{ secrets.ftp_user }}
         password: ${{ secrets.ftp_password }}
-        local-dir: ./dist/unipdv-frontend/assets/
+        local-dir: ./dist/unipdv-frontend/*
         server-dir: /www/unipdv/
       
