@@ -3,6 +3,9 @@ import { SweetAlertIcon } from "sweetalert2";
 export const environment = {
   production: true,
   apiBaseURL: 'https://unipdv-backend.herokuapp.com/api/',
+  tokenUrl:"",
+  clientId:"",
+  clientSecret:""
 };
 
 //Trocar para URL do Endpoint
