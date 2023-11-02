@@ -36,7 +36,7 @@ const routes: Routes = [
         component: HomeComponent,
       },
       // {
-      //   path: '**',
+      //   path: '***',
       //   //component: PageNotFoundComponent,
       // },
       {
