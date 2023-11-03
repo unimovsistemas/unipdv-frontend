@@ -21,7 +21,7 @@ import { ConsultaEstoqueComponent } from './components/estoque/consulta-estoque/
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent,
+    component: HomeComponent,
   },
   {
     path: 'login/register',
