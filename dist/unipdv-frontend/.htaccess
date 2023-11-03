@@ -1,11 +1,12 @@
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteBase /
-
-  # Se o diretório ou arquivo existir, use-o diretamente
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-
-  # Caso contrário, encaminhe para o index.html
-  RewriteRule ^ index.html [L]
-</IfModule>
+Options +FollowSymLinks
+ 
+<ifModule mod_rewrite.c>
+    RewriteEngine On
+ 
+    AddType application/javascript module .mjs    
+ 
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} !index
+    RewriteRule (.*) index.html [L]
+</ifModule> 
