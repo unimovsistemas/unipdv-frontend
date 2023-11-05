@@ -12,8 +12,7 @@ import {ProdutoService} from 'src/app/_services/produto/produto.service';
 import {AlertService} from 'src/app/_shared/alert/alert.service';
 import {ERROR, SUCCESS} from 'src/environments/environment';
 
-@Component({selector: 'app-pedido-form', templateUrl: './pedido-form.component.html', styleUrls: ['./pedido-form.component.scss']})
-export class PedidoFormComponent implements OnInit {
+@Component({ selector: 'app-pedido-form', templateUrl: './pedido-form.component.html', styleUrls: ['./pedido-form.component.scss']}) export class PedidoFormComponent implements OnInit {
     productCode !: string;
     shoppingList : IprodutoOutput[] = [];
     produtosEstoque : IprodutoOutput[] = [];
@@ -77,6 +76,7 @@ export class PedidoFormComponent implements OnInit {
         const produto = this.produtosEstoque.find(produto => this.filtrarPorCodigo(produto, this.productCode));
 
         if (produto) {
+            produto.pedidoQuantidade = 1;
             this.shoppingList.push(produto);
             this.productCode = '';
             this.totalProdutos = this.totalProdutos + 1;

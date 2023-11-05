@@ -43,7 +43,9 @@ export class ConsultaEstoqueComponent implements OnInit {
                         id: produto.estoque.id,
                         idProduto: produto.id !,
                         quantidade: produto.estoque.quantidade,
-                        produtoNome: produto.nome
+                        produtoNome: produto.nome,
+                        produtoTamanho: produto.tamanho
+
                     }
                     this.estoques.push(estoque);
                 },

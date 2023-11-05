@@ -48,7 +48,7 @@ export class ProdutoFormComponent implements OnInit {
 
     ngOnInit(): void {
         this.formProduto = new FormGroup({
-            codigo: new FormControl('', [Validators.required]),
+            codigo: new FormControl({ value: '', disabled: true }, [Validators.required]),
             nome: new FormControl('', [Validators.required]),
             descricao: new FormControl(''),
             tamanho: new FormControl(''),
@@ -76,6 +76,10 @@ export class ProdutoFormComponent implements OnInit {
             this.formProduto.get('quantidade')?.setValue(produto.estoque.quantidade);
             this.formProduto.get('categoria')?.setValue(produto.categoria.id);
         });
+        } else {
+          this.produtoService.getProximoCodigoLivre()
+          .subscribe(proximoCodigoLivre => this.formProduto.get('codigo')?.setValue(proximoCodigoLivre));
+    
         }
       }
     

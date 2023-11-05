@@ -4,6 +4,7 @@
       <tr>
         <th>Produto</th>
         <th>Quantidade</th>
+        <th>Tamanho</th>
         <th>Ações</th>
       </tr>
     </ng-template>
@@ -11,6 +12,7 @@
       <tr>
         <td>{{ estoque.produtoNome }}</td>
         <td>{{ estoque.quantidade }}</td>
+        <td>{{ estoque.produtoTamanho ? estoque.produtoTamanho : "-"}}</td>
         <td>
           <button (click)="showModal(estoque.id)" label="Baixa Manual" pButton type="button" icon="pi pi-pencil"
             class="p-button-rounded p-button-info"></button>
@@ -19,11 +21,13 @@
     </ng-template>
     <p-paginator [rows]="5" [totalRecords]="totalRegistros" [pageLinkSize]="5" [style]="{'margin-top': '10px'}"></p-paginator>
   </p-table>
+  <ng-template pTemplate="footer">
   <div class="grid grid-nogutter justify-content-center">
     <div style="padding: 20px">
-        <button routerLink="/pdv/estoque/consultar" pButton icon="pi pi-search-plus" label="Consultar Pedido"></button>
+        <button routerLink="/pdv/estoque/consultar" pButton icon="pi pi-search-plus" label="Consultar Estoque"></button>
     </div>
 </div>
+</ng-template>
 </p-card>
 
 <p-dialog header="Baixa Manual" [(visible)]="displayModal" [modal]="true" [closable]="true">
@@ -37,7 +41,7 @@
         <div class="p-field">
           <label for="motivos">Motivo</label>
           <p-dropdown formControlName="motivo" [options]="motivos" optionLabel="motivo" optionValue="motivo"
-            [(ngModel)]="motivoSelecionado"></p-dropdown>
+            ></p-dropdown>
         </div>
         <div class="p-field">
           <label for="comentario">Comentário</label>

@@ -5,4 +5,5 @@ export interface Iestoqueoutput {
     quantidade: number;
     idProduto: string;
     produtoNome?: string;
+    produtoTamanho?: string;
 }

@@ -28,11 +28,11 @@ from 'src/environments/environment';
     }
 
     update(pedido : IPedidoInput):Observable < IPedido > {
-        return this.httpClient.put<IPedido>(`${API_BASE}/pedido / ${ pedido.id }`, pedido);
+        return this.httpClient.put<IPedido>(`${API_BASE}/pedido/${ pedido.id }`, pedido);
     }
 
     delete(id : string):Observable < boolean > {
-        return this.httpClient.delete<boolean>(`${API_BASE}/pedido / ${ id }`);
+        return this.httpClient.delete<boolean>(`${API_BASE}/pedido/${ id }`);
     }
 
     getAll():Observable < IPedido[] > {
@@ -45,5 +45,9 @@ from 'src/environments/environment';
 
     findAllPedidoPorNomeCliente(nomeCliente : string): Observable <IPedido[]> {
         return this.httpClient.get<IPedido[]>(`${API_BASE}/pedido/findAllPedidoPorNomeCliente?nomeCliente=${nomeCliente}`);
+    }
+
+    concluirVenda(pedido : IPedidoInput):Observable < any > {
+        return this.httpClient.put<any>(`${API_BASE}/pedido/concluirVenda/${ pedido.id }`, pedido);
     }
 }

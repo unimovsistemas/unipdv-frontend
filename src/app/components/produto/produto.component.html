@@ -1,5 +1,5 @@
 <p-card>
-  <p-table [value]="produtos" [paginator]="true" [rows]="3">
+  <p-table [value]="produtos" [paginator]="true" [rows]="5">
     <ng-template pTemplate="header">
       <tr>
         <th>Código</th>
@@ -27,7 +27,7 @@
         </td>
       </tr>
     </ng-template>
-    <p-paginator [rows]="3" [totalRecords]="totalRegistros" [pageLinkSize]="3"
+    <p-paginator [rows]="5" [totalRecords]="totalRegistros" [pageLinkSize]="3"
       [style]="{'margin-top': '10px'}"></p-paginator>
   </p-table>
   <ng-template pTemplate="footer">

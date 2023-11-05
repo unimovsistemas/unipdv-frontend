@@ -38,4 +38,8 @@ export class ProdutoService {
         return this.http.get<IprodutoOutput>(`${API_BASE}/produto/findProdutoPorCodigo?codigo=${codigo}`);
     }
 
+    getProximoCodigoLivre(): Observable <number> {
+       return this.http.get<number>(`${API_BASE}/produto/getProximoCodigoLivre`);
+    }
+
 }

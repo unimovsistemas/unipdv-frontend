@@ -19,6 +19,7 @@
         <tr>
           <th>Produto</th>
           <th>Quantidade</th>
+          <th>Tamanho</th>
           <th>Ações</th>
         </tr>
       </ng-template>
@@ -26,6 +27,7 @@
         <tr>
           <td>{{ estoque.produtoNome }}</td>
           <td>{{ estoque.quantidade }}</td>
+          <td>{{ estoque.produtoTamanho }} </td>
           <td>
             <button (click)="showModal(estoque.id)" label="Baixa Manual" pButton type="button" icon="pi pi-pencil"
               class="p-button-rounded p-button-info"></button>

@@ -31,7 +31,13 @@ import { ERROR, SUCCESS } from 'src/environments/environment';
 
 @Component({ selector: 'app-estoque', templateUrl: './estoque.component.html', styleUrls: ['./estoque.component.scss'] }) export class EstoqueComponent implements OnInit {
 
-  estoques: Iestoqueoutput[] = [];
+  estoques : Iestoqueoutput[] = [{
+    id: '',
+    quantidade: 0,
+    idProduto: '',
+    produtoNome: '',
+    produtoTamanho: '',
+  }];
   motivos: any[] = [{ motivo: "Doação" }, { motivo: "Quebra" }, { motivo: "Venda" }];
   motivoSelecionado: string = '';
   totalRegistros: number = 0;
@@ -67,7 +73,8 @@ import { ERROR, SUCCESS } from 'src/environments/environment';
           id: produto.estoque.id!,
           idProduto: produto.id!,
           quantidade: produto.estoque.quantidade,
-          produtoNome: produto.nome
+          produtoNome: produto.nome,
+          produtoTamanho: produto.tamanho
         })
       )
       this.totalRegistros = produtos.length;

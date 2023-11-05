@@ -41,7 +41,10 @@
                 <td>
                     <button (click)="showModal(pedido)" label="Ver Produtos" pButton type="button" icon="pi pi-pencil"
                         class="p-button-rounded p-button-info"></button>
-                </td>
+                <br><br>
+                <button (click)="concluirVenda(pedido)" label="Concluir Venda" pButton type="button" icon="pi pi-pencil"
+                      class="p-button-rounded p-button-info"></button>
+                    </td>
             </tr>
         </ng-template>
         <p-paginator [rows]="2" [totalRecords]="totalPedidos" [pageLinkSize]="2"
